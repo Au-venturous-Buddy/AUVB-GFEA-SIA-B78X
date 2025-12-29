@@ -74,7 +74,7 @@ export default class FlightLogBase extends React.Component {
                     <Accordion className="mb-3" flush>
                       {
                         Object.keys(contents.images).length > 0 ?
-                        Object.keys(contents.images).map((date) => (
+                        Object.keys(contents.images).sort().map((date) => (
                           <div className="m-3" key={date}>
                             <Accordion.Item eventKey={date}>
                               <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
@@ -111,7 +111,7 @@ export default class FlightLogBase extends React.Component {
                       <Accordion className="mb-3" flush>
                       {
                         Object.keys(this.props.videos).length > 0 ?
-                        Object.keys(this.props.videos).map((date) => (
+                        Object.keys(this.props.videos).sort().map((date) => (
                           <div className="m-3" key={date}>
                             <Accordion.Item eventKey={date}>
                               <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
