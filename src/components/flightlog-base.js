@@ -83,7 +83,7 @@ export default class FlightLogBase extends React.Component {
                                 </ResponsiveHeader>
                               </Accordion.Header>
                               <Accordion.Body>
-                                <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+                                <ImageList sx={{ width: 500, height: 450 }}>
                                   {contents.images[date].map((image) => (
                                     <ImageListItem key={`${date} ${image.name}`}>
                                       <img
