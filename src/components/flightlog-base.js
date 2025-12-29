@@ -66,7 +66,7 @@ export default class FlightLogBase extends React.Component {
               <Tabs
                 defaultActiveKey={Object.keys(contents.images).length > 0 ? "photos" : (Object.keys(this.props.videos).length > 0 ? "videos" : "flightlogs")}
               >
-                <Tab eventKey="photos" title="Photos" hidden={!(Object.keys(contents.images).length > 0)}>
+                <Tab eventKey="photos" title="Photos" disabled={!(Object.keys(contents.images).length > 0)}>
                   <section className="py-3 flightlog-main">
                     <section className="mb-3" style={{textAlign: "center"}}>
                       <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
@@ -74,7 +74,7 @@ export default class FlightLogBase extends React.Component {
                     <Accordion className="mb-3" flush>
                       {
                         Object.keys(contents.images).length > 0 ?
-                        Object.keys(contents.images).sort().map((date) => (
+                        (Object.keys(contents.images).sort()).map((date) => (
                           <div className="m-3" key={date}>
                             <Accordion.Item eventKey={date}>
                               <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
@@ -103,7 +103,7 @@ export default class FlightLogBase extends React.Component {
                     </Accordion>
                   </section>
                 </Tab>
-                <Tab eventKey="videos" title="Videos" hidden={!(Object.keys(this.props.videos).length > 0)}>
+                <Tab eventKey="videos" title="Videos" disabled={!(Object.keys(this.props.videos).length > 0)}>
                   <section className="py-3 flightlog-main">
                       <section className="mb-3" style={{textAlign: "center"}}>
                         <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
@@ -111,7 +111,7 @@ export default class FlightLogBase extends React.Component {
                       <Accordion className="mb-3" flush>
                       {
                         Object.keys(this.props.videos).length > 0 ?
-                        Object.keys(this.props.videos).sort().map((date) => (
+                        (Object.keys(this.props.videos).sort()).map((date) => (
                           <div className="m-3" key={date}>
                             <Accordion.Item eventKey={date}>
                               <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
