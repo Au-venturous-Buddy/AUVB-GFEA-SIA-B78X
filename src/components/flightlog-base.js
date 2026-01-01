@@ -64,46 +64,8 @@ export default class FlightLogBase extends React.Component {
             <div className={`m-3`} style={{textAlign: 'center'}}>
             <section lang={contents.currentLanguageCode} className="mb-3">
               <Tabs
-                defaultActiveKey={Object.keys(contents.images).length > 0 ? "photos" : (Object.keys(this.props.videos).length > 0 ? "videos" : "flightlogs")}
+                defaultActiveKey={Object.keys(this.props.videos).length > 0 ? "videos" : (Object.keys(contents.images).length > 0 ? "photos" : "flightlogs")}
               >
-                <Tab eventKey="photos" title="Photos" disabled={!(Object.keys(contents.images).length > 0)}>
-                  <section className="py-3 flightlog-main">
-                    <section className="mb-3" style={{textAlign: "center"}}>
-                      <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
-                      <Badge hidden={!contents.metadataItems.childMarkdownRemark.frontmatter.retired}>Historical</Badge>
-                    </section>
-                    <Accordion className="mb-3" flush>
-                      {
-                        Object.keys(contents.images).length > 0 ?
-                        ((Object.keys(contents.images).sort()).reverse()).map((date) => (
-                          <div className="m-3" key={date}>
-                            <Accordion.Item eventKey={date}>
-                              <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
-                                <ResponsiveHeader level={2} maxSize={1.5} minScreenSize={500}>
-                                  {`${date}`}
-                                </ResponsiveHeader>
-                              </Accordion.Header>
-                              <Accordion.Body>
-                                <ImageList cols={3}>
-                                  {contents.images[date].map((image) => (
-                                    <ImageListItem key={`${date} ${image.name}`}>
-                                      <img
-                                        className="album-photo"
-                                        src={image.publicURL}
-                                        alt={`${date} ${image.name}`}
-                                      />
-                                    </ImageListItem>
-                                  ))}
-                                </ImageList>
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          </div>
-                        )) :
-                        <div></div>
-                      }
-                    </Accordion>
-                  </section>
-                </Tab>
                 <Tab eventKey="videos" title="Videos" disabled={!(Object.keys(this.props.videos).length > 0)}>
                   <section className="py-3 flightlog-main">
                       <section className="mb-3" style={{textAlign: "center"}}>
@@ -133,6 +95,44 @@ export default class FlightLogBase extends React.Component {
                                     </div>
                                   ))
                                 }
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          </div>
+                        )) :
+                        <div></div>
+                      }
+                    </Accordion>
+                  </section>
+                </Tab>
+                <Tab eventKey="photos" title="Photos" disabled={!(Object.keys(contents.images).length > 0)}>
+                  <section className="py-3 flightlog-main">
+                    <section className="mb-3" style={{textAlign: "center"}}>
+                      <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
+                      <Badge hidden={!contents.metadataItems.childMarkdownRemark.frontmatter.retired}>Historical</Badge>
+                    </section>
+                    <Accordion className="mb-3" flush>
+                      {
+                        Object.keys(contents.images).length > 0 ?
+                        ((Object.keys(contents.images).sort()).reverse()).map((date) => (
+                          <div className="m-3" key={date}>
+                            <Accordion.Item eventKey={date}>
+                              <Accordion.Header className="hover-shadow-card bold-text justify-content-center" style={{textAlign: "center"}}>
+                                <ResponsiveHeader level={2} maxSize={1.5} minScreenSize={500}>
+                                  {`${date}`}
+                                </ResponsiveHeader>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                <ImageList cols={3}>
+                                  {contents.images[date].map((image) => (
+                                    <ImageListItem key={`${date} ${image.name}`}>
+                                      <img
+                                        className="album-photo"
+                                        src={image.publicURL}
+                                        alt={`${date} ${image.name}`}
+                                      />
+                                    </ImageListItem>
+                                  ))}
+                                </ImageList>
                               </Accordion.Body>
                             </Accordion.Item>
                           </div>
