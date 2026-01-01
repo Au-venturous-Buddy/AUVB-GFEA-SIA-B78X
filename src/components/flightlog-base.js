@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Layout from "./layout"
-import { Modal, Form, Tab, Tabs, Accordion, Table } from "react-bootstrap";
+import { Modal, Form, Tab, Tabs, Accordion, Table, Badge } from "react-bootstrap";
 import SettingsButton from "./settings-button";
 import ResponsiveSize from "../hooks/responsive-size";
 import ResponsiveHeader from "./responsive-header";
@@ -70,6 +70,7 @@ export default class FlightLogBase extends React.Component {
                   <section className="py-3 flightlog-main">
                     <section className="mb-3" style={{textAlign: "center"}}>
                       <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
+                      <Badge hidden={!contents.metadataItems.childMarkdownRemark.frontmatter.retired}>Historical</Badge>
                     </section>
                     <Accordion className="mb-3" flush>
                       {
@@ -107,6 +108,7 @@ export default class FlightLogBase extends React.Component {
                   <section className="py-3 flightlog-main">
                       <section className="mb-3" style={{textAlign: "center"}}>
                         <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
+                        <Badge hidden={!contents.metadataItems.childMarkdownRemark.frontmatter.retired}>Historical</Badge>
                       </section>
                       <Accordion className="mb-3" flush>
                       {
@@ -144,6 +146,7 @@ export default class FlightLogBase extends React.Component {
                   <section className="py-3 flightlog-main">
                       <section className="mb-3" style={{textAlign: "center"}}>
                         <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
+                        <Badge hidden={!contents.metadataItems.childMarkdownRemark.frontmatter.retired}>Historical</Badge>
                       </section>
                       <Table>
                         <thead>
