@@ -317,10 +317,6 @@ ul.bullet-points li {
   box-shadow: $shadowImg;
 }
 
-.flightlog-main {
-  min-height: 8.26in;
-}
-
 .flightlog-main,
 .img-button.flightlog-page-thumbnail {
   font-family: "Chalkduster", "Futura", "Segoe UI", Arial, Helvetica, sans-serif;
@@ -472,6 +468,10 @@ ul.bullet-points li {
 .nav-tabs .nav-link.disabled {
   background: white;
   border: 3px solid gray;
+}
+
+.nav-tabs .nav-link.disabled {
+  color: white;
 }
 
 .tablet-display-blue {
