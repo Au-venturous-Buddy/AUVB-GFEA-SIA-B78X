@@ -140,7 +140,7 @@ export default class FlightLogBase extends React.Component {
                     </Accordion>
                   </section>
                 </Tab>
-                <Tab eventKey="flightlogs" title="Flight Logs">
+                <Tab eventKey="flightlogs" title="Flight Logs" disabled={!(this.props.flightLogs.length > 0)}>
                   <section className="py-3 flightlog-main">
                       <section className="mb-3" style={{textAlign: "center"}}>
                         <ResponsiveHeader level={1} maxSize={2} minScreenSize={800}>{contents.metadataItems.childMarkdownRemark.frontmatter.title}</ResponsiveHeader>
@@ -158,6 +158,7 @@ export default class FlightLogBase extends React.Component {
                         </thead>
                         <tbody>
                           {
+                            this.props.flightLogs.length > 0 ?
                             this.props.flightLogs.map((item) => (
                               <tr>
                                 <td>{item["date"]}</td>
@@ -167,7 +168,8 @@ export default class FlightLogBase extends React.Component {
                                 <td>{item["to"]}</td>
                                 <td>{item["status"]}</td>
                               </tr>
-                            ))
+                            )) :
+                            <tr></tr>
                           }
                         </tbody>
                       </Table>
